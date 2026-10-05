@@ -1,6 +1,6 @@
-# Hiren Kanzariya — Loan Master & Senior Banking Consultant Portfolio
+# Hiren Kanzariya — Senior Financial Consultant & Banking Specialist Portfolio
 
-A premium, interactive, and responsive portfolio website designed for **Hiren Kanzariya**, a senior financial consultant and loan specialist ("The Loan Master") with 15+ years of banking underwriting expertise.
+A premium, interactive, and responsive portfolio website designed for **Hiren Kanzariya**, a Senior Financial Consultant and Banking Specialist with 15+ years of ex-banking underwriting expertise.
 
 ## 🌟 Key Features
 

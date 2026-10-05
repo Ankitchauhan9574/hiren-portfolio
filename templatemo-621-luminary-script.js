@@ -1,5 +1,5 @@
 /*
-  Hiren Kanzariya — Loan Master & Banking Specialist
+  Hiren Kanzariya — Senior Financial Consultant & Banking Specialist
   Interactive & Dynamic Application Logic
 */
 
@@ -382,7 +382,7 @@ if (loanForm) {
     // Open WhatsApp directly
     window.open(`https://wa.me/919876543210?text=${formattedMessage}`, '_blank');
 
-    alert(`Thank you, ${name}! Your loan inquiry for ₹ ${loanAmount} has been prepared. We are connecting you directly with Loan Master Hiren Kanzariya on WhatsApp.`);
+    alert(`Thank you, ${name}! Your loan inquiry for ₹ ${loanAmount} has been prepared. We are connecting you directly with Senior Financial Consultant Hiren Kanzariya on WhatsApp.`);
     loanForm.reset();
   });
 }
