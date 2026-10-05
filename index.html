@@ -28,23 +28,35 @@
 <nav class="top-nav" id="topNav">
   <a href="#" class="nav-brand">
     <div class="brand-logo-icon">HK</div>
-    HIREN KANZARIYA <span class="brand-badge">FINANCIAL CONSULTANT</span>
+    <div class="brand-text-wrap">
+      <span class="brand-name">HIREN KANZARIYA</span>
+      <span class="brand-badge" data-i18n="brandBadge">FINANCIAL CONSULTANT</span>
+    </div>
   </a>
+
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Loan Solutions</a></li>
-    <li><a href="#comparison">Why Us</a></li>
-    <li><a href="#calculator">EMI Calculator</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#testimonials">Success Stories</a></li>
-    <li><a href="#checklist">Documents</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about" data-i18n="navAbout">About</a></li>
+    <li><a href="#services" data-i18n="navLoans">Loan Solutions</a></li>
+    <li><a href="#comparison" data-i18n="navWhyUs">Why Us</a></li>
+    <li><a href="#calculator" data-i18n="navEmi">EMI Calculator</a></li>
+    <li><a href="#process" data-i18n="navProcess">Process</a></li>
+    <li><a href="#testimonials" data-i18n="navStories">Success Stories</a></li>
+    <li><a href="#checklist" data-i18n="navDocs">Documents</a></li>
+    <li><a href="#faq" data-i18n="navFaq">FAQ</a></li>
+    <li><a href="#contact" data-i18n="navContact">Contact</a></li>
   </ul>
+
   <div class="nav-actions">
+    <!-- Multi-Language Switcher (English default, Gujarati secondary, Hindi third) -->
+    <div class="lang-switcher" id="topLangSwitcher" role="group" aria-label="Language selector">
+      <button type="button" class="lang-btn active" data-lang="en" title="English">EN</button>
+      <button type="button" class="lang-btn" data-lang="gu" title="ગુજરાતી">ગુજ</button>
+      <button type="button" class="lang-btn" data-lang="hi" title="हिन्दी">हिन्दी</button>
+    </div>
     <a href="tel:+918140932289" class="nav-phone" title="Direct Phone Call">📞 +91 81409 32289</a>
-    <a href="#contact" class="nav-cta">Apply for Loan</a>
+    <a href="#contact" class="nav-cta" data-i18n="navApply">Apply for Loan</a>
   </div>
+
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
     <span class="toggle-bar"></span><span class="toggle-bar"></span>
   </button>
@@ -53,17 +65,25 @@
 <!-- ═══ MOBILE MENU ═══ -->
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-inner">
+    <div class="mobile-lang-box">
+      <span class="mobile-lang-title" data-i18n="langChooseTitle">Language / ભાષા / भाषा:</span>
+      <div class="lang-switcher mobile-lang-switcher" role="group">
+        <button type="button" class="lang-btn active" data-lang="en">English</button>
+        <button type="button" class="lang-btn" data-lang="gu">ગુજરાતી</button>
+        <button type="button" class="lang-btn" data-lang="hi">हिन्दी</button>
+      </div>
+    </div>
     <div class="mobile-menu-links">
-      <a href="#" class="mobile-menu-link" data-index="01">Home</a>
-      <a href="#about" class="mobile-menu-link" data-index="02">About Hiren</a>
-      <a href="#services" class="mobile-menu-link" data-index="03">All Loan Solutions</a>
-      <a href="#comparison" class="mobile-menu-link" data-index="04">Why Us vs Direct Banks</a>
-      <a href="#calculator" class="mobile-menu-link" data-index="05">Two-Way EMI Calculator</a>
-      <a href="#process" class="mobile-menu-link" data-index="06">Approval Journey</a>
-      <a href="#testimonials" class="mobile-menu-link" data-index="07">Client Testimonials</a>
-      <a href="#checklist" class="mobile-menu-link" data-index="08">Document Checklist</a>
-      <a href="#faq" class="mobile-menu-link" data-index="09">FAQ</a>
-      <a href="#contact" class="mobile-menu-link" data-index="10">Book Free Consultation</a>
+      <a href="#" class="mobile-menu-link" data-index="01" data-i18n="mobHome">Home</a>
+      <a href="#about" class="mobile-menu-link" data-index="02" data-i18n="mobAbout">About Hiren</a>
+      <a href="#services" class="mobile-menu-link" data-index="03" data-i18n="mobLoans">All Loan Solutions</a>
+      <a href="#comparison" class="mobile-menu-link" data-index="04" data-i18n="mobWhyUs">Why Us vs Direct Banks</a>
+      <a href="#calculator" class="mobile-menu-link" data-index="05" data-i18n="mobEmi">Two-Way EMI Calculator</a>
+      <a href="#process" class="mobile-menu-link" data-index="06" data-i18n="mobProcess">Approval Journey</a>
+      <a href="#testimonials" class="mobile-menu-link" data-index="07" data-i18n="mobStories">Client Testimonials</a>
+      <a href="#checklist" class="mobile-menu-link" data-index="08" data-i18n="mobDocs">Document Checklist</a>
+      <a href="#faq" class="mobile-menu-link" data-index="09" data-i18n="mobFaq">FAQ</a>
+      <a href="#contact" class="mobile-menu-link" data-index="10" data-i18n="mobContact">Book Free Consultation</a>
     </div>
     <div class="mobile-menu-footer">
       <a href="tel:+918140932289">📞 Call: +91 81409 32289</a>
@@ -107,55 +127,55 @@
     
     <div class="hero-live-badge">
       <div class="pulse-dot"></div>
-      <span>★ 15+ Years Ex-Banking Mastery | 40+ Partner Banks &amp; NBFCs</span>
+      <span data-i18n="heroBadge">★ 15+ Years Ex-Banking Mastery | 40+ Partner Banks &amp; NBFCs</span>
     </div>
 
-    <h1>Guaranteed Approvals &amp; Lowest ROI<br><em>Comprehensive Loan &amp; Banking Solutions</em></h1>
+    <h1 data-i18n="heroTitle">Guaranteed Approvals &amp; Lowest ROI<br><em>Comprehensive Loan &amp; Banking Solutions</em></h1>
     
-    <p class="hero-sub">
+    <p class="hero-sub" data-i18n="heroSub">
       Meet <strong>Hiren Kanzariya</strong> — Senior Financial Consultant &amp; Banking Specialist. 
       From Home Loans &amp; MSME Working Capital to High-Value LAP, Project Finance, and Rate Reduction Balance Transfers, 
       get your loan sanctioned at the absolute lowest market rates with lightning-fast processing.
     </p>
     
     <div class="hero-ctas">
-      <a href="#contact" class="btn-primary">⚡ Apply for Loan Now</a>
-      <a href="#calculator" class="btn-secondary">📊 Live EMI Calculator</a>
-      <a href="https://wa.me/918140932289?text=Hello%20Hiren%20Sir%2C%20I%20am%20looking%20for%20a%20Loan%20consultation." target="_blank" class="btn-whatsapp">💬 Instant WhatsApp</a>
+      <a href="#contact" class="btn-primary" data-i18n="heroBtnApply">⚡ Apply for Loan Now</a>
+      <a href="#calculator" class="btn-secondary" data-i18n="heroBtnEmi">📊 Live EMI Calculator</a>
+      <a href="https://wa.me/918140932289?text=Hello%20Hiren%20Sir%2C%20I%20am%20looking%20for%20a%20Loan%20consultation." target="_blank" class="btn-whatsapp" data-i18n="heroBtnWa">💬 Instant WhatsApp</a>
     </div>
 
     <!-- Trust Ribbon -->
     <div class="hero-features-ribbon">
-      <div class="ribbon-item"><span class="ribbon-icon">⚡</span> 48-Hour Sanction Guarantee</div>
-      <div class="ribbon-item"><span class="ribbon-icon">🛡️</span> Zero Upfront Consultation Fee</div>
-      <div class="ribbon-item"><span class="ribbon-icon">🔒</span> 100% Confidential &amp; Compliant</div>
-      <div class="ribbon-item"><span class="ribbon-icon">📈</span> Lowest Interest Rate Lock</div>
+      <div class="ribbon-item"><span class="ribbon-icon">⚡</span> <span data-i18n="ribbon1">48-Hour Sanction Guarantee</span></div>
+      <div class="ribbon-item"><span class="ribbon-icon">🛡️</span> <span data-i18n="ribbon2">Zero Upfront Consultation Fee</span></div>
+      <div class="ribbon-item"><span class="ribbon-icon">🔒</span> <span data-i18n="ribbon3">100% Confidential &amp; Compliant</span></div>
+      <div class="ribbon-item"><span class="ribbon-icon">📈</span> <span data-i18n="ribbon4">Lowest Interest Rate Lock</span></div>
     </div>
 
     <!-- Live Counter Metrics -->
     <div class="hero-metrics">
       <div class="metric">
         <div class="metric-value">₹<span class="counter" data-target="250" data-decimals="0">0</span><span>Cr+</span></div>
-        <div class="metric-label">Loans Disbursed</div>
+        <div class="metric-label" data-i18n="metric1Label">Loans Disbursed</div>
       </div>
       <div class="metric">
         <div class="metric-value"><span class="counter" data-target="99.4" data-decimals="1">0.0</span><span>%</span></div>
-        <div class="metric-label">Approval Success Rate</div>
+        <div class="metric-label" data-i18n="metric2Label">Approval Success Rate</div>
       </div>
       <div class="metric">
         <div class="metric-value"><span class="counter" data-target="4200" data-decimals="0">0</span><span>+</span></div>
-        <div class="metric-label">Happy Clients Funded</div>
+        <div class="metric-label" data-i18n="metric3Label">Happy Clients Funded</div>
       </div>
       <div class="metric">
         <div class="metric-value"><span class="counter" data-target="40" data-decimals="0">0</span><span>+</span></div>
-        <div class="metric-label">Partner Banks &amp; NBFCs</div>
+        <div class="metric-label" data-i18n="metric4Label">Partner Banks &amp; NBFCs</div>
       </div>
     </div>
   </section>
 
   <!-- ═══ BANK PARTNERS TICKER ═══ -->
   <div class="logo-ticker reveal">
-    <div class="logo-ticker-label">Associated with India's Premier Banking &amp; NBFC Institutions</div>
+    <div class="logo-ticker-label" data-i18n="tickerLabel">Associated with India's Premier Banking &amp; NBFC Institutions</div>
     <div class="ticker-track" id="tickerTrack">
       <span class="ticker-item">🏛️ State Bank of India</span><span class="ticker-dot"></span>
       <span class="ticker-item">🏛️ HDFC Bank</span><span class="ticker-dot"></span>
@@ -177,18 +197,12 @@
       <span class="ticker-item">🏛️ ICICI Bank</span><span class="ticker-dot"></span>
       <span class="ticker-item">🏛️ Axis Bank</span><span class="ticker-dot"></span>
       <span class="ticker-item">🏛️ Kotak Mahindra Bank</span><span class="ticker-dot"></span>
-      <span class="ticker-item">🏛️ Bank of Baroda</span><span class="ticker-dot"></span>
-      <span class="ticker-item">🏛️ Tata Capital</span><span class="ticker-dot"></span>
-      <span class="ticker-item">🏛️ Bajaj Finserv</span><span class="ticker-dot"></span>
-    </div>
-  </div>
-
-  <!-- ═══ DIRECT BANK VS HIREN COMPARISON ═══ -->
+      <span   <!-- ═══ DIRECT BANK VS HIREN COMPARISON ═══ -->
   <section class="section comparison-section" id="comparison">
     <div class="section-center">
-      <p class="section-tag reveal">The Smarter Choice</p>
-      <h2 class="section-title reveal reveal-d1">Why Apply with Us vs <strong>Direct Bank Branches?</strong></h2>
-      <p class="section-body reveal reveal-d2">
+      <p class="section-tag reveal" data-i18n="compTag">The Smarter Choice</p>
+      <h2 class="section-title reveal reveal-d1" data-i18n="compTitle">Why Apply with Us vs <strong>Direct Bank Branches?</strong></h2>
+      <p class="section-body reveal reveal-d2" data-i18n="compSub">
         See how our ex-banking advisory saves you weeks of stress, prevents rejection marks on your credit report, and secures thousands in interest savings.
       </p>
     </div>
@@ -197,9 +211,9 @@
       
       <!-- Card 1: Direct Bank -->
       <div class="comparison-card bank-direct">
-        <span class="comp-card-badge negative">❌ Applying Directly to a Single Bank</span>
-        <h3 class="comp-title">Direct Bank Route</h3>
-        <p class="comp-desc">High risk of rejection, limited single-product bias, and lack of underwriting flexibility.</p>
+        <span class="comp-card-badge negative" data-i18n="compBankBadge">❌ Applying Directly to a Single Bank</span>
+        <h3 class="comp-title" data-i18n="compBankTitle">Direct Bank Route</h3>
+        <p class="comp-desc" data-i18n="compBankDesc">High risk of rejection, limited single-product bias, and lack of underwriting flexibility.</p>
         <ul class="comp-list bank-direct">
           <li><span class="icon-cross">✕</span> Restricted to only 1 bank’s rigid internal credit score rules</li>
           <li><span class="icon-cross">✕</span> File rejection enters CIBIL as an inquiry mark, hurting future eligibility</li>
@@ -211,9 +225,9 @@
 
       <!-- Card 2: Hiren Assisted -->
       <div class="comparison-card hiren-assisted">
-        <span class="comp-card-badge positive">✓ With Hiren Kanzariya (Banking Advisory)</span>
-        <h3 class="comp-title">Strategic Banking Route</h3>
-        <p class="comp-desc">Institutional underwriting mastery, 40+ lenders compared, and guaranteed lowest ROI.</p>
+        <span class="comp-card-badge positive" data-i18n="compHirenBadge">✓ With Hiren Kanzariya (Banking Advisory)</span>
+        <h3 class="comp-title" data-i18n="compHirenTitle">Strategic Banking Route</h3>
+        <p class="comp-desc" data-i18n="compHirenDesc">Institutional underwriting mastery, 40+ lenders compared, and guaranteed lowest ROI.</p>
         <ul class="comp-list hiren-assisted">
           <li><span class="icon-check">✓</span> <strong>40+ Top Banks &amp; NBFCs</strong> compared in real time for optimal eligibility</li>
           <li><span class="icon-check">✓</span> <strong>Pre-Underwritten File</strong>: Zero risk of rejection before submission</li>
@@ -231,9 +245,9 @@
   <!-- ═══ LOAN SERVICES & SOLUTIONS ═══ -->
   <section class="section" id="services">
     <div class="section-center">
-      <p class="section-tag reveal">Complete Financial Portfolio</p>
-      <h2 class="section-title reveal reveal-d1">All Types of Loans — <strong>Tailored Solutions</strong></h2>
-      <p class="section-body reveal reveal-d2">
+      <p class="section-tag reveal" data-i18n="loanSectionTag">Complete Financial Portfolio</p>
+      <h2 class="section-title reveal reveal-d1" data-i18n="loanSectionTitle">All Types of Loans — <strong>Tailored Solutions</strong></h2>
+      <p class="section-body reveal reveal-d2" data-i18n="loanSectionSub">
         Whether you are buying your dream home, scaling a manufacturing business, or seeking high-ticket project finance, we match you with the ideal bank offering the lowest interest rate and maximum loan eligibility.
       </p>
     </div>
@@ -264,8 +278,8 @@
           <li>Zero prepayment &amp; foreclosure penalty</li>
         </ul>
         <div class="loan-card-footer">
-          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20want%20to%20apply%20for%20a%20Home%20Loan." target="_blank" class="btn-primary">Apply Now</a>
-          <a href="#calculator" class="btn-secondary">Check EMI</a>
+          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20want%20to%20apply%20for%20a%20Home%20Loan." target="_blank" class="btn-primary" data-i18n="heroBtnApply">Apply Now</a>
+          <a href="#calculator" class="btn-secondary" data-i18n="heroBtnEmi">Check EMI</a>
         </div>
       </div>
 
@@ -284,8 +298,8 @@
           <li>Flexible overdraft &amp; drop-line facilities</li>
         </ul>
         <div class="loan-card-footer">
-          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20am%20looking%20for%20a%20Business%20Loan." target="_blank" class="btn-primary">Apply Now</a>
-          <a href="#calculator" class="btn-secondary">Check EMI</a>
+          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20am%20looking%20for%20a%20Business%20Loan." target="_blank" class="btn-primary" data-i18n="heroBtnApply">Apply Now</a>
+          <a href="#calculator" class="btn-secondary" data-i18n="heroBtnEmi">Check EMI</a>
         </div>
       </div>
 
@@ -304,8 +318,8 @@
           <li>Accepts commercial &amp; industrial properties</li>
         </ul>
         <div class="loan-card-footer">
-          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20need%20a%20Loan%20Against%20Property%20(LAP)." target="_blank" class="btn-primary">Apply Now</a>
-          <a href="#calculator" class="btn-secondary">Check EMI</a>
+          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20need%20a%20Loan%20Against%20Property%20(LAP)." target="_blank" class="btn-primary" data-i18n="heroBtnApply">Apply Now</a>
+          <a href="#calculator" class="btn-secondary" data-i18n="heroBtnEmi">Check EMI</a>
         </div>
       </div>
 
@@ -324,8 +338,8 @@
           <li>Direct liaisoning with Bank Zonal Heads</li>
         </ul>
         <div class="loan-card-footer">
-          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20need%20Project%20Finance%20Consultation." target="_blank" class="btn-primary">Apply Now</a>
-          <a href="#contact" class="btn-secondary">Discuss Project</a>
+          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20need%20Project%20Finance%20Consultation." target="_blank" class="btn-primary" data-i18n="heroBtnApply">Apply Now</a>
+          <a href="#contact" class="btn-secondary" data-i18n="navContact">Discuss Project</a>
         </div>
       </div>
 
@@ -344,8 +358,8 @@
           <li>Free eligibility and savings calculation</li>
         </ul>
         <div class="loan-card-footer">
-          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20want%20to%20reduce%20my%20existing%20Loan%20EMI%20via%20Balance%20Transfer." target="_blank" class="btn-primary">Transfer Loan</a>
-          <a href="#calculator" class="btn-secondary">Check Savings</a>
+          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20want%20to%20reduce%20my%20existing%20Loan%20EMI%20via%20Balance%20Transfer." target="_blank" class="btn-primary" data-i18n="heroBtnApply">Transfer Loan</a>
+          <a href="#calculator" class="btn-secondary" data-i18n="heroBtnEmi">Check Savings</a>
         </div>
       </div>
 
@@ -364,8 +378,8 @@
           <li>Tenure options from 1 to 7 years</li>
         </ul>
         <div class="loan-card-footer">
-          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20need%20an%20urgent%20Personal%20Loan." target="_blank" class="btn-primary">Apply Now</a>
-          <a href="#calculator" class="btn-secondary">Check EMI</a>
+          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20need%20an%20urgent%20Personal%20Loan." target="_blank" class="btn-primary" data-i18n="heroBtnApply">Apply Now</a>
+          <a href="#calculator" class="btn-secondary" data-i18n="heroBtnEmi">Check EMI</a>
         </div>
       </div>
 
@@ -384,8 +398,8 @@
           <li>Attractive structured monthly repayment</li>
         </ul>
         <div class="loan-card-footer">
-          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20want%20a%20Commercial%20Vehicle%20Loan." target="_blank" class="btn-primary">Apply Now</a>
-          <a href="#calculator" class="btn-secondary">Check EMI</a>
+          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20want%20a%20Commercial%20Vehicle%20Loan." target="_blank" class="btn-primary" data-i18n="heroBtnApply">Apply Now</a>
+          <a href="#calculator" class="btn-secondary" data-i18n="heroBtnEmi">Check EMI</a>
         </div>
       </div>
 
@@ -404,8 +418,8 @@
           <li>Simple qualification-based approval</li>
         </ul>
         <div class="loan-card-footer">
-          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20am%20a%20Doctor%2FProfessional%20seeking%20a%20loan." target="_blank" class="btn-primary">Apply Now</a>
-          <a href="#calculator" class="btn-secondary">Check EMI</a>
+          <a href="https://wa.me/918140932289?text=Hi%20Hiren%20Sir%2C%20I%20am%20a%20Doctor%2FProfessional%20seeking%20a%20loan." target="_blank" class="btn-primary" data-i18n="heroBtnApply">Apply Now</a>
+          <a href="#calculator" class="btn-secondary" data-i18n="heroBtnEmi">Check EMI</a>
         </div>
       </div>
 
@@ -449,7 +463,7 @@
     <!-- Feature 2 -->
     <div class="feature reverse reveal">
       <div class="feature-visual">
-        <img src="images/banking-partners.jpg" alt="Banking Partnerships & Priority Sanctions">
+        <img src="images/banking-partners.jpg" alt="Banking Partnerships &amp; Priority Sanctions">
         <div class="feature-visual-tag">
           <span>🤝 40+ Bank &amp; NBFC Tie-ups</span>
           <strong>Priority Fast-Track</strong>
@@ -511,17 +525,17 @@
   <!-- ═══ TWO-WAY ADVANCED EMI & REVERSE CALCULATOR (VICE-VERSA) ═══ -->
   <section class="section" id="calculator">
     <div class="section-center">
-      <p class="section-tag reveal">Two-Way Financial Calculator</p>
-      <h2 class="section-title reveal reveal-d1">Smart <strong>EMI &amp; Eligibility Calculator</strong></h2>
-      <p class="section-body reveal reveal-d2">
+      <p class="section-tag reveal" data-i18n="calcTag">Two-Way Financial Calculator</p>
+      <h2 class="section-title reveal reveal-d1" data-i18n="calcTitle">Smart <strong>EMI &amp; Eligibility Calculator</strong></h2>
+      <p class="section-body reveal reveal-d2" data-i18n="calcSub">
         Type exact amounts or use the sliders. Switch modes to calculate either your Monthly EMI or your Maximum Loan Eligibility from your target EMI!
       </p>
     </div>
 
     <!-- Calculator Mode Switcher -->
     <div class="calc-mode-switcher reveal reveal-d2">
-      <button class="calc-mode-btn active" id="btnModeEmi" data-mode="emi">📊 Calculate Monthly EMI</button>
-      <button class="calc-mode-btn" id="btnModeLoan" data-mode="loan">🔄 Reverse: Find Loan by Desired EMI</button>
+      <button class="calc-mode-btn active" id="btnModeEmi" data-mode="emi" data-i18n="calcBtnModeEmi">📊 Calculate Monthly EMI</button>
+      <button class="calc-mode-btn" id="btnModeLoan" data-mode="loan" data-i18n="calcBtnModeLoan">🔄 Reverse: Find Loan by Desired EMI</button>
     </div>
 
     <div class="calculator-container reveal reveal-d3">
@@ -532,7 +546,7 @@
         <!-- Field 1: Loan Amount (Mode 1) OR Desired EMI (Mode 2) -->
         <div class="slider-group" id="groupLoanAmount">
           <div class="slider-header">
-            <span class="slider-title" id="lblPrimaryInput">Loan Amount Required</span>
+            <span class="slider-title" id="lblPrimaryInput" data-i18n="calcLblAmount">Loan Amount Required</span>
             <div class="slider-input-wrapper">
               <span>₹</span>
               <input type="number" id="inputLoanAmount" class="slider-direct-input" value="5000000" min="50000" max="100000000" step="25000">
@@ -548,7 +562,7 @@
         <!-- Field 2: Interest Rate -->
         <div class="slider-group">
           <div class="slider-header">
-            <span class="slider-title">Interest Rate (p.a.)</span>
+            <span class="slider-title" data-i18n="calcLblRate">Interest Rate (p.a.)</span>
             <div class="slider-input-wrapper">
               <input type="number" id="inputInterestRate" class="slider-direct-input" value="8.5" min="6.0" max="24.0" step="0.05" style="width: 70px;">
               <span>%</span>
@@ -564,7 +578,7 @@
         <!-- Field 3: Tenure -->
         <div class="slider-group">
           <div class="slider-header">
-            <span class="slider-title">Loan Tenure (Years)</span>
+            <span class="slider-title" data-i18n="calcLblTenure">Loan Tenure (Years)</span>
             <div class="slider-input-wrapper">
               <input type="number" id="inputTenure" class="slider-direct-input" value="20" min="1" max="30" step="1" style="width: 60px;">
               <span>Yrs</span>
@@ -582,7 +596,7 @@
       <!-- Results Card Column -->
       <div class="calc-results-card">
         <div>
-          <div class="emi-badge" id="lblResultBadge">Estimated Monthly Installment</div>
+          <div class="emi-badge" id="lblResultBadge" data-i18n="calcBadgeEmi">Estimated Monthly Installment</div>
           <div class="emi-amount-large" id="calcMonthlyEmi">₹ 43,391</div>
 
           <div class="emi-breakdown-bar">
@@ -591,15 +605,15 @@
           </div>
 
           <div class="breakdown-row">
-            <span><div class="breakdown-dot dot-principal"></div> <span id="lblRowPrincipal">Principal Loan Amount</span></span>
+            <span><div class="breakdown-dot dot-principal"></div> <span id="lblRowPrincipal" data-i18n="calcRowPrincipal">Principal Loan Amount</span></span>
             <strong id="calcPrincipalDisplay">₹ 50,00,000</strong>
           </div>
           <div class="breakdown-row">
-            <span><div class="breakdown-dot dot-interest"></div> Total Interest Payable</span>
+            <span><div class="breakdown-dot dot-interest"></div> <span id="lblRowInterest" data-i18n="calcRowInterest">Total Interest Payable</span></span>
             <strong id="calcTotalInterest">₹ 54,13,879</strong>
           </div>
           <div class="breakdown-row">
-            <span>Total Payment (Principal + Interest)</span>
+            <span id="lblRowTotal" data-i18n="calcRowTotal">Total Payment (Principal + Interest)</span>
             <strong id="calcTotalAmount">₹ 1,04,13,879</strong>
           </div>
 
@@ -608,7 +622,7 @@
           </div>
         </div>
 
-        <a href="https://wa.me/918140932289" id="calcApplyBtn" target="_blank" class="btn-primary calc-apply-btn">
+        <a href="https://wa.me/918140932289" id="calcApplyBtn" target="_blank" class="btn-primary calc-apply-btn" data-i18n="calcApplyBtnText">
           📲 Apply for this Loan via WhatsApp
         </a>
       </div>
@@ -620,9 +634,9 @@
 
   <!-- ═══ 4-STEP LOAN PROCESS ═══ -->
   <section class="section section-center" id="process">
-    <p class="section-tag reveal">Hassle-Free Process</p>
-    <h2 class="section-title reveal reveal-d1">Your 4-Step Journey to <strong>Fast Disbursal</strong></h2>
-    <p class="section-body reveal reveal-d2">We take care of the bank liaisoning and complex underwriting so you can focus on what matters.</p>
+    <p class="section-tag reveal" data-i18n="processTag">Hassle-Free Process</p>
+    <h2 class="section-title reveal reveal-d1" data-i18n="processTitle">Your 4-Step Journey to <strong>Fast Disbursal</strong></h2>
+    <p class="section-body reveal reveal-d2" data-i18n="processSub">We take care of the bank liaisoning and complex underwriting so you can focus on what matters.</p>
 
     <div class="process-grid reveal reveal-d3">
       
@@ -657,8 +671,8 @@
 
   <!-- ═══ CLIENT TESTIMONIALS & SUCCESS STORIES ═══ -->
   <section class="section section-center" id="testimonials">
-    <p class="section-tag reveal">Client Testimonials</p>
-    <h2 class="section-title reveal reveal-d1">Trusted by <strong>4,200+ Borrowers &amp; Businesses</strong></h2>
+    <p class="section-tag reveal" data-i18n="testTag">Client Testimonials</p>
+    <h2 class="section-title reveal reveal-d1" data-i18n="testTitle">Trusted by <strong>4,200+ Borrowers &amp; Businesses</strong></h2>
 
     <div class="testimonials-grid">
       
@@ -714,9 +728,9 @@
 
   <!-- ═══ DOCUMENT CHECKLIST GUIDE ═══ -->
   <section class="section section-center" id="checklist">
-    <p class="section-tag reveal">Transparent Preparation</p>
-    <h2 class="section-title reveal reveal-d1">Required Document <strong>Checklist</strong></h2>
-    <p class="section-body reveal reveal-d2">Select your employment profile to see the essential documents required for fast sanctioning.</p>
+    <p class="section-tag reveal" data-i18n="docTag">Transparent Preparation</p>
+    <h2 class="section-title reveal reveal-d1" data-i18n="docTitle">Required Document <strong>Checklist</strong></h2>
+    <p class="section-body reveal reveal-d2" data-i18n="docSub">Select your employment profile to see the essential documents required for fast sanctioning.</p>
 
     <!-- Checklist Switcher Tabs -->
     <div class="checklist-tabs reveal reveal-d3">
@@ -738,8 +752,8 @@
 
   <!-- ═══ FAQ SECTION ═══ -->
   <section class="section section-center" id="faq">
-    <p class="section-tag reveal">Frequently Asked Questions</p>
-    <h2 class="section-title reveal reveal-d1">Everything You Need to <strong>Know About Loans</strong></h2>
+    <p class="section-tag reveal" data-i18n="faqTag">Frequently Asked Questions</p>
+    <h2 class="section-title reveal reveal-d1" data-i18n="faqTitle">Everything You Need to <strong>Know About Loans</strong></h2>
 
     <div class="faq-list reveal reveal-d2">
       <div class="faq-controls">
@@ -779,9 +793,9 @@
   <!-- ═══ CONSULTATION BOOKING & LEAD FORM ═══ -->
   <section class="section" id="contact">
     <div class="section-center">
-      <p class="section-tag reveal">Direct Consultation</p>
-      <h2 class="section-title reveal reveal-d1">Get in Touch with <strong>Hiren Kanzariya</strong></h2>
-      <p class="section-body reveal reveal-d2">Fill out the quick form below or connect directly on WhatsApp / Phone for immediate assistance.</p>
+      <p class="section-tag reveal" data-i18n="contactTag">Direct Consultation</p>
+      <h2 class="section-title reveal reveal-d1" data-i18n="contactTitle">Get in Touch with <strong>Hiren Kanzariya</strong></h2>
+      <p class="section-body reveal reveal-d2" data-i18n="contactSub">Fill out the quick form below or connect directly on WhatsApp / Phone for immediate assistance.</p>
     </div>
 
     <div class="consultation-wrapper reveal reveal-d3">
@@ -789,8 +803,8 @@
       <!-- Info Left -->
       <div class="consultation-info">
         <div>
-          <h3>Let’s Sanction Your Loan Today</h3>
-          <p>Get personalized advisory from an ex-banker with 15+ years of financial mastery. We find the lowest interest rate and highest sanction limit for you.</p>
+          <h3 data-i18n="contactH3">Let’s Sanction Your Loan Today</h3>
+          <p data-i18n="contactDesc">Get personalized advisory from an ex-banker with 15+ years of financial mastery. We find the lowest interest rate and highest sanction limit for you.</p>
         </div>
 
         <div class="contact-cards-list">
@@ -875,7 +889,7 @@
             <input type="text" id="leadNotes" class="form-control" placeholder="Mention any specific bank preference or existing EMI details">
           </div>
 
-          <button type="submit" class="btn-primary form-submit-btn">
+          <button type="submit" class="btn-primary form-submit-btn" data-i18n="formBtn">
             🚀 Submit &amp; Connect on WhatsApp with Hiren Kanzariya
           </button>
         </form>
@@ -886,29 +900,27 @@
 
   <!-- ═══ FOOTER ═══ -->
   <section class="footer-cta">
-    <p class="section-tag reveal">Trusted Financial Partnership</p>
-    <h2 class="section-title reveal reveal-d1">Get Your Loan Approved at the <strong>Lowest Interest Rate</strong></h2>
-    <p class="section-body reveal reveal-d2" style="margin: 0 auto;">Doorstep assistance • 40+ Partner Banks • Transparent Execution</p>
+    <p class="section-tag reveal" data-i18n="footerTag">Trusted Financial Partnership</p>
+    <h2 class="section-title reveal reveal-d1" data-i18n="footerTitle">Get Your Loan Approved at the <strong>Lowest Interest Rate</strong></h2>
+    <p class="section-body reveal reveal-d2" data-i18n="footerSub" style="margin: 0 auto;">Doorstep assistance • 40+ Partner Banks • Transparent Execution</p>
     
     <div class="hero-ctas reveal reveal-d3" style="margin-top: 36px;">
-      <a href="#contact" class="btn-primary">Apply Online</a>
-      <a href="https://wa.me/918140932289" target="_blank" class="btn-whatsapp">WhatsApp Now</a>
+      <a href="#contact" class="btn-primary" data-i18n="heroBtnApply">Apply Online</a>
+      <a href="https://wa.me/918140932289" target="_blank" class="btn-whatsapp" data-i18n="heroBtnWa">WhatsApp Now</a>
     </div>
 
     <div class="footer-bar reveal reveal-d4">
       <div class="footer-brand">HIREN KANZARIYA &mdash; FINANCIAL CONSULTANT © 2026</div>
       <div class="footer-links">
-        <a href="#services">Services</a>
-        <a href="#comparison">Why Us</a>
-        <a href="#calculator">EMI Calculator</a>
-        <a href="#checklist">Documents</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
+        <a href="#services" data-i18n="navLoans">Services</a>
+        <a href="#comparison" data-i18n="navWhyUs">Why Us</a>
+        <a href="#calculator" data-i18n="navEmi">EMI Calculator</a>
+        <a href="#checklist" data-i18n="navDocs">Documents</a>
+        <a href="#faq" data-i18n="navFaq">FAQ</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
       </div>
       <div class="footer-credit">Senior Financial Consultant &amp; Banking Loan Specialist</div>
     </div>
-  </section>
-
 </main>
 
 <!-- ═══ FLOATING QUICK CONNECT BUTTONS ═══ -->
