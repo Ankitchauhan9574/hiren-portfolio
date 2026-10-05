@@ -1,6 +1,6 @@
 /*
   Hiren Kanzariya — Senior Financial Consultant & Banking Specialist
-  Interactive & Dynamic Application Logic with Advanced EMI Analytics & Micro-Interactions
+  Two-Way Dynamic EMI & Eligibility Calculator (Vice-Versa) with Direct Numeric Typing
 */
 
 // ── Smooth Scroll ──
@@ -29,7 +29,7 @@ const io = new IntersectionObserver(entries => {
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+}, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
 reveals.forEach(el => io.observe(el));
 
 // ── Animated Counters with Easing ──
@@ -50,14 +50,14 @@ document.querySelectorAll('.counter').forEach(el => {
     }
     requestAnimationFrame(update);
     observer.unobserve(el);
-  }, { threshold: 0.4 }).observe(el);
+  }, { threshold: 0.3 }).observe(el);
 });
 
 // ── Top Nav Scroll Effect ──
 const topNav = document.getElementById('topNav');
 if (topNav) {
   window.addEventListener('scroll', () => {
-    topNav.classList.toggle('scrolled', window.scrollY > 40);
+    topNav.classList.toggle('scrolled', window.scrollY > 30);
   }, { passive: true });
 }
 
@@ -187,7 +187,7 @@ filterButtons.forEach(btn => {
   });
 });
 
-// ── Currency Formatter (Indian System) ──
+// ── Currency Formatter ──
 function formatIndianCurrency(num) {
   if (num >= 10000000) {
     return '₹ ' + (num / 10000000).toFixed(2) + ' Cr';
@@ -201,80 +201,182 @@ function formatExactINR(num) {
   return '₹ ' + Math.round(num).toLocaleString('en-IN');
 }
 
-// ── EMI Calculator with Live Savings Calculator ──
-const loanAmountSlider = document.getElementById('calcLoanAmount');
-const loanInterestSlider = document.getElementById('calcInterestRate');
-const loanTenureSlider = document.getElementById('calcTenure');
+// ══════════════════════════════════════════════════
+// ── TWO-WAY DYNAMIC & REVERSE EMI CALCULATOR ──
+// ══════════════════════════════════════════════════
+let currentCalcMode = 'emi'; // 'emi' = find EMI from Loan, 'loan' = find Loan from EMI
 
-const loanAmountDisplay = document.getElementById('calcLoanAmountDisplay');
-const loanInterestDisplay = document.getElementById('calcInterestDisplay');
-const loanTenureDisplay = document.getElementById('calcTenureDisplay');
+const btnModeEmi = document.getElementById('btnModeEmi');
+const btnModeLoan = document.getElementById('btnModeLoan');
 
-const monthlyEmiDisplay = document.getElementById('calcMonthlyEmi');
-const totalInterestDisplay = document.getElementById('calcTotalInterest');
-const totalAmountDisplay = document.getElementById('calcTotalAmount');
-const principalAmountDisplay = document.getElementById('calcPrincipalDisplay');
+const lblPrimaryInput = document.getElementById('lblPrimaryInput');
+const inputLoanAmount = document.getElementById('inputLoanAmount');
+const calcLoanAmount = document.getElementById('calcLoanAmount');
+const limitMin = document.getElementById('limitMin');
+const limitMax = document.getElementById('limitMax');
+
+const inputInterestRate = document.getElementById('inputInterestRate');
+const calcInterestRate = document.getElementById('calcInterestRate');
+
+const inputTenure = document.getElementById('inputTenure');
+const calcTenure = document.getElementById('calcTenure');
+
+const lblResultBadge = document.getElementById('lblResultBadge');
+const calcMonthlyEmi = document.getElementById('calcMonthlyEmi');
+const lblRowPrincipal = document.getElementById('lblRowPrincipal');
+const calcPrincipalDisplay = document.getElementById('calcPrincipalDisplay');
+const calcTotalInterest = document.getElementById('calcTotalInterest');
+const calcTotalAmount = document.getElementById('calcTotalAmount');
 const calcSavingsHighlight = document.getElementById('calcSavingsHighlight');
 
 const barPrincipal = document.getElementById('barPrincipal');
 const barInterest = document.getElementById('barInterest');
 const calcApplyBtn = document.getElementById('calcApplyBtn');
 
-function calculateEMI() {
-  if (!loanAmountSlider || !loanInterestSlider || !loanTenureSlider) return;
+function switchCalcMode(mode) {
+  currentCalcMode = mode;
+  if (mode === 'emi') {
+    btnModeEmi.classList.add('active');
+    btnModeLoan.classList.remove('active');
+    
+    lblPrimaryInput.textContent = 'Loan Amount Required';
+    lblResultBadge.textContent = 'Estimated Monthly Installment';
+    lblRowPrincipal.textContent = 'Principal Loan Amount';
 
-  const P = parseFloat(loanAmountSlider.value);
-  const rateVal = parseFloat(loanInterestSlider.value);
+    calcLoanAmount.min = "100000";
+    calcLoanAmount.max = "50000000";
+    calcLoanAmount.step = "50000";
+    inputLoanAmount.min = "50000";
+    inputLoanAmount.max = "100000000";
+    inputLoanAmount.step = "25000";
+    limitMin.textContent = '₹ 1 Lakh';
+    limitMax.textContent = '₹ 5 Crore';
+
+    inputLoanAmount.value = 5000000;
+    calcLoanAmount.value = 5000000;
+  } else {
+    btnModeLoan.classList.add('active');
+    btnModeEmi.classList.remove('active');
+
+    lblPrimaryInput.textContent = 'Target Monthly EMI (Your Budget)';
+    lblResultBadge.textContent = 'Max Loan Sanction Eligibility';
+    lblRowPrincipal.textContent = 'Sanctioned Loan Principal';
+
+    calcLoanAmount.min = "5000";
+    calcLoanAmount.max = "500000";
+    calcLoanAmount.step = "1000";
+    inputLoanAmount.min = "1000";
+    inputLoanAmount.max = "2000000";
+    inputLoanAmount.step = "500";
+    limitMin.textContent = '₹ 5,000 /mo';
+    limitMax.textContent = '₹ 5.00 Lakh /mo';
+
+    inputLoanAmount.value = 45000;
+    calcLoanAmount.value = 45000;
+  }
+  calculateTwoWay();
+}
+
+if (btnModeEmi && btnModeLoan) {
+  btnModeEmi.addEventListener('click', () => switchCalcMode('emi'));
+  btnModeLoan.addEventListener('click', () => switchCalcMode('loan'));
+}
+
+function calculateTwoWay() {
+  if (!inputLoanAmount || !calcInterestRate || !calcTenure) return;
+
+  const rateVal = parseFloat(calcInterestRate.value) || 8.5;
   const R = rateVal / 12 / 100;
-  const N = parseFloat(loanTenureSlider.value) * 12;
+  const tenureYrs = parseFloat(calcTenure.value) || 20;
+  const N = tenureYrs * 12;
 
-  // Monthly EMI = P * r * (1 + r)^n / ((1 + r)^n - 1)
-  const emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+  let P = 0;
+  let emi = 0;
+
+  if (currentCalcMode === 'emi') {
+    // Mode 1: Calculate EMI from Loan Amount P
+    P = parseFloat(inputLoanAmount.value) || 100000;
+    emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+    
+    calcMonthlyEmi.textContent = formatExactINR(emi);
+    calcPrincipalDisplay.textContent = formatExactINR(P);
+  } else {
+    // Mode 2 (Vice-Versa): Calculate Max Loan Amount P from Target EMI
+    emi = parseFloat(inputLoanAmount.value) || 5000;
+    P = (emi * (Math.pow(1 + R, N) - 1)) / (R * Math.pow(1 + R, N));
+    
+    calcMonthlyEmi.textContent = formatExactINR(P); // In reverse mode, main result is Loan Amount!
+    calcPrincipalDisplay.textContent = formatExactINR(P);
+  }
+
   const totalPayment = emi * N;
-  const totalInterest = totalPayment - P;
+  const totalInterest = Math.max(0, totalPayment - P);
 
-  // Compare with a standard retail rate (e.g., standard market rate + 1.25%)
+  calcTotalInterest.textContent = formatExactINR(totalInterest);
+  calcTotalAmount.textContent = formatExactINR(totalPayment);
+
+  // Interest savings vs standard rate (+1.25%)
   const benchmarkRate = (rateVal + 1.25) / 12 / 100;
   const benchmarkEmi = (P * benchmarkRate * Math.pow(1 + benchmarkRate, N)) / (Math.pow(1 + benchmarkRate, N) - 1);
   const benchmarkTotalInterest = (benchmarkEmi * N) - P;
   const totalSavings = Math.max(0, benchmarkTotalInterest - totalInterest);
 
-  // Update text displays
-  loanAmountDisplay.textContent = formatIndianCurrency(P);
-  loanInterestDisplay.textContent = rateVal.toFixed(1) + ' %';
-  loanTenureDisplay.textContent = loanTenureSlider.value + (parseInt(loanTenureSlider.value) === 1 ? ' Year' : ' Years');
-
-  monthlyEmiDisplay.textContent = formatExactINR(emi);
-  principalAmountDisplay.textContent = formatExactINR(P);
-  totalInterestDisplay.textContent = formatExactINR(totalInterest);
-  totalAmountDisplay.textContent = formatExactINR(totalPayment);
-
   if (calcSavingsHighlight) {
-    calcSavingsHighlight.innerHTML = `✨ <strong>Estimated Interest Savings:</strong> Save up to ${formatExactINR(totalSavings)} vs market standard rates!`;
+    calcSavingsHighlight.innerHTML = `✨ <strong>Estimated Interest Savings:</strong> Save up to ${formatExactINR(totalSavings)} vs standard retail bank rates!`;
   }
 
-  // Update visual breakdown bar
-  const principalPercent = (P / totalPayment) * 100;
-  const interestPercent = (totalInterest / totalPayment) * 100;
+  // Visual breakdown bar
+  const principalPercent = Math.min(100, Math.max(0, (P / totalPayment) * 100));
+  const interestPercent = Math.min(100, Math.max(0, (totalInterest / totalPayment) * 100));
 
   if (barPrincipal) barPrincipal.style.width = principalPercent + '%';
   if (barInterest) barInterest.style.width = interestPercent + '%';
 
-  // Update apply button WhatsApp link
+  // Apply button WhatsApp text
   if (calcApplyBtn) {
     const textMsg = encodeURIComponent(
-      `Hello Hiren Sir, I calculated my Loan requirement on your website:\n\n• Loan Amount: ${formatIndianCurrency(P)} (${formatExactINR(P)})\n• Interest Rate: ${rateVal}%\n• Tenure: ${loanTenureSlider.value} Years\n• Calculated Monthly EMI: ${formatExactINR(emi)}/month\n\nPlease check my eligibility and suggest the lowest ROI bank.`
+      `Hello Hiren Sir, I calculated my Loan requirement on your website:\n\n• ${currentCalcMode === 'emi' ? 'Loan Amount' : 'Target Monthly EMI'}: ${formatExactINR(parseFloat(inputLoanAmount.value))}\n• Interest Rate: ${rateVal}%\n• Tenure: ${tenureYrs} Years\n• ${currentCalcMode === 'emi' ? 'Calculated EMI' : 'Calculated Loan Eligibility'}: ${formatExactINR(currentCalcMode === 'emi' ? emi : P)}\n\nPlease review my profile and share the best bank sanction offer.`
     );
     calcApplyBtn.href = `https://wa.me/918140932289?text=${textMsg}`;
   }
 }
 
-if (loanAmountSlider && loanInterestSlider && loanTenureSlider) {
-  loanAmountSlider.addEventListener('input', calculateEMI);
-  loanInterestSlider.addEventListener('input', calculateEMI);
-  loanTenureSlider.addEventListener('input', calculateEMI);
-  calculateEMI();
+// ── Two-Way Event Listeners (Slider <-> Input synchronization) ──
+if (calcLoanAmount && inputLoanAmount) {
+  calcLoanAmount.addEventListener('input', () => {
+    inputLoanAmount.value = calcLoanAmount.value;
+    calculateTwoWay();
+  });
+  inputLoanAmount.addEventListener('input', () => {
+    calcLoanAmount.value = inputLoanAmount.value;
+    calculateTwoWay();
+  });
 }
+
+if (calcInterestRate && inputInterestRate) {
+  calcInterestRate.addEventListener('input', () => {
+    inputInterestRate.value = calcInterestRate.value;
+    calculateTwoWay();
+  });
+  inputInterestRate.addEventListener('input', () => {
+    calcInterestRate.value = inputInterestRate.value;
+    calculateTwoWay();
+  });
+}
+
+if (calcTenure && inputTenure) {
+  calcTenure.addEventListener('input', () => {
+    inputTenure.value = calcTenure.value;
+    calculateTwoWay();
+  });
+  inputTenure.addEventListener('input', () => {
+    calcTenure.value = inputTenure.value;
+    calculateTwoWay();
+  });
+}
+
+// Initialize on page load
+calculateTwoWay();
 
 // ── Document Checklist Switcher ──
 const checklistTabs = document.querySelectorAll('.checklist-tab-btn');

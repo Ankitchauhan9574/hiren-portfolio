@@ -58,7 +58,7 @@
       <a href="#about" class="mobile-menu-link" data-index="02">About Hiren</a>
       <a href="#services" class="mobile-menu-link" data-index="03">All Loan Solutions</a>
       <a href="#comparison" class="mobile-menu-link" data-index="04">Why Us vs Direct Banks</a>
-      <a href="#calculator" class="mobile-menu-link" data-index="05">Live EMI Calculator</a>
+      <a href="#calculator" class="mobile-menu-link" data-index="05">Two-Way EMI Calculator</a>
       <a href="#process" class="mobile-menu-link" data-index="06">Approval Journey</a>
       <a href="#testimonials" class="mobile-menu-link" data-index="07">Client Testimonials</a>
       <a href="#checklist" class="mobile-menu-link" data-index="08">Document Checklist</a>
@@ -508,52 +508,67 @@
 
   <div class="silk-divider reveal"></div>
 
-  <!-- ═══ LIVE LOAN EMI CALCULATOR ═══ -->
+  <!-- ═══ TWO-WAY ADVANCED EMI & REVERSE CALCULATOR (VICE-VERSA) ═══ -->
   <section class="section" id="calculator">
     <div class="section-center">
-      <p class="section-tag reveal">Financial Planning Tool</p>
-      <h2 class="section-title reveal reveal-d1">Interactive <strong>Loan EMI &amp; Savings Calculator</strong></h2>
+      <p class="section-tag reveal">Two-Way Financial Calculator</p>
+      <h2 class="section-title reveal reveal-d1">Smart <strong>EMI &amp; Eligibility Calculator</strong></h2>
       <p class="section-body reveal reveal-d2">
-        Adjust the sliders below to calculate your estimated monthly installment, total interest payable, and overall payout.
+        Type exact amounts or use the sliders. Switch modes to calculate either your Monthly EMI or your Maximum Loan Eligibility from your target EMI!
       </p>
+    </div>
+
+    <!-- Calculator Mode Switcher -->
+    <div class="calc-mode-switcher reveal reveal-d2">
+      <button class="calc-mode-btn active" id="btnModeEmi" data-mode="emi">📊 Calculate Monthly EMI</button>
+      <button class="calc-mode-btn" id="btnModeLoan" data-mode="loan">🔄 Reverse: Find Loan by Desired EMI</button>
     </div>
 
     <div class="calculator-container reveal reveal-d3">
       
-      <!-- Sliders Column -->
+      <!-- Sliders & Inputs Column -->
       <div class="calc-sliders">
         
-        <!-- Slider 1: Loan Amount -->
-        <div class="slider-group">
+        <!-- Field 1: Loan Amount (Mode 1) OR Desired EMI (Mode 2) -->
+        <div class="slider-group" id="groupLoanAmount">
           <div class="slider-header">
-            <span class="slider-title">Loan Amount Required</span>
-            <div class="slider-value-box" id="calcLoanAmountDisplay">₹ 50.00 Lakh</div>
+            <span class="slider-title" id="lblPrimaryInput">Loan Amount Required</span>
+            <div class="slider-input-wrapper">
+              <span>₹</span>
+              <input type="number" id="inputLoanAmount" class="slider-direct-input" value="5000000" min="50000" max="100000000" step="25000">
+            </div>
           </div>
           <input type="range" id="calcLoanAmount" class="custom-range" min="100000" max="50000000" step="50000" value="5000000">
           <div class="slider-limits">
-            <span>₹ 1 Lakh</span>
-            <span>₹ 5 Crore</span>
+            <span id="limitMin">₹ 1 Lakh</span>
+            <span id="limitMax">₹ 5 Crore</span>
           </div>
         </div>
 
-        <!-- Slider 2: Interest Rate -->
+        <!-- Field 2: Interest Rate -->
         <div class="slider-group">
           <div class="slider-header">
             <span class="slider-title">Interest Rate (p.a.)</span>
-            <div class="slider-value-box" id="calcInterestDisplay">8.5 %</div>
+            <div class="slider-input-wrapper">
+              <input type="number" id="inputInterestRate" class="slider-direct-input" value="8.5" min="6.0" max="24.0" step="0.05" style="width: 70px;">
+              <span>%</span>
+            </div>
           </div>
-          <input type="range" id="calcInterestRate" class="custom-range" min="6.5" max="18.0" step="0.1" value="8.5">
+          <input type="range" id="calcInterestRate" class="custom-range" min="6.5" max="18.0" step="0.05" value="8.5">
           <div class="slider-limits">
             <span>6.5 %</span>
             <span>18.0 %</span>
           </div>
         </div>
 
-        <!-- Slider 3: Tenure -->
+        <!-- Field 3: Tenure -->
         <div class="slider-group">
           <div class="slider-header">
             <span class="slider-title">Loan Tenure (Years)</span>
-            <div class="slider-value-box" id="calcTenureDisplay">20 Years</div>
+            <div class="slider-input-wrapper">
+              <input type="number" id="inputTenure" class="slider-direct-input" value="20" min="1" max="30" step="1" style="width: 60px;">
+              <span>Yrs</span>
+            </div>
           </div>
           <input type="range" id="calcTenure" class="custom-range" min="1" max="30" step="1" value="20">
           <div class="slider-limits">
@@ -567,7 +582,7 @@
       <!-- Results Card Column -->
       <div class="calc-results-card">
         <div>
-          <div class="emi-badge">Estimated Monthly Installment</div>
+          <div class="emi-badge" id="lblResultBadge">Estimated Monthly Installment</div>
           <div class="emi-amount-large" id="calcMonthlyEmi">₹ 43,391</div>
 
           <div class="emi-breakdown-bar">
@@ -576,7 +591,7 @@
           </div>
 
           <div class="breakdown-row">
-            <span><div class="breakdown-dot dot-principal"></div> Principal Loan Amount</span>
+            <span><div class="breakdown-dot dot-principal"></div> <span id="lblRowPrincipal">Principal Loan Amount</span></span>
             <strong id="calcPrincipalDisplay">₹ 50,00,000</strong>
           </div>
           <div class="breakdown-row">
