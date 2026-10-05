@@ -8,7 +8,7 @@
 <meta name="keywords" content="Hiren Kanzariya, Financial Consultant, Banking Specialist, Home Loan, Business Loan, LAP, Loan Against Property, Personal Loan, Balance Transfer, Debt Advisory, Gujarat">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="templatemo-621-luminary-style.css">
 </head>
 <body>
@@ -19,14 +19,21 @@
 </svg>
 <div class="atmosphere"></div>
 
+<!-- Ambient Glowing Orbs -->
+<div class="glow-orb orb-1"></div>
+<div class="glow-orb orb-2"></div>
+<div class="glow-orb orb-3"></div>
+
 <!-- ═══ TOP NAVIGATION ═══ -->
 <nav class="top-nav" id="topNav">
   <a href="#" class="nav-brand">
+    <div class="brand-logo-icon">HK</div>
     HIREN KANZARIYA <span class="brand-badge">FINANCIAL CONSULTANT</span>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Loan Solutions</a></li>
+    <li><a href="#comparison">Why Us</a></li>
     <li><a href="#calculator">EMI Calculator</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#testimonials">Success Stories</a></li>
@@ -35,7 +42,7 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="tel:+918140932289" class="nav-phone" title="Call Direct">📞 +91 81409 32289</a>
+    <a href="tel:+918140932289" class="nav-phone" title="Direct Phone Call">📞 +91 81409 32289</a>
     <a href="#contact" class="nav-cta">Apply for Loan</a>
   </div>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -50,12 +57,13 @@
       <a href="#" class="mobile-menu-link" data-index="01">Home</a>
       <a href="#about" class="mobile-menu-link" data-index="02">About Hiren</a>
       <a href="#services" class="mobile-menu-link" data-index="03">All Loan Solutions</a>
-      <a href="#calculator" class="mobile-menu-link" data-index="04">Live EMI Calculator</a>
-      <a href="#process" class="mobile-menu-link" data-index="05">Approval Journey</a>
-      <a href="#testimonials" class="mobile-menu-link" data-index="06">Client Testimonials</a>
-      <a href="#checklist" class="mobile-menu-link" data-index="07">Document Checklist</a>
-      <a href="#faq" class="mobile-menu-link" data-index="08">FAQ</a>
-      <a href="#contact" class="mobile-menu-link" data-index="09">Book Free Consultation</a>
+      <a href="#comparison" class="mobile-menu-link" data-index="04">Why Us vs Direct Banks</a>
+      <a href="#calculator" class="mobile-menu-link" data-index="05">Live EMI Calculator</a>
+      <a href="#process" class="mobile-menu-link" data-index="06">Approval Journey</a>
+      <a href="#testimonials" class="mobile-menu-link" data-index="07">Client Testimonials</a>
+      <a href="#checklist" class="mobile-menu-link" data-index="08">Document Checklist</a>
+      <a href="#faq" class="mobile-menu-link" data-index="09">FAQ</a>
+      <a href="#contact" class="mobile-menu-link" data-index="10">Book Free Consultation</a>
     </div>
     <div class="mobile-menu-footer">
       <a href="tel:+918140932289">📞 Call: +91 81409 32289</a>
@@ -96,20 +104,32 @@
   <!-- ═══ HERO SECTION ═══ -->
   <section class="hero" id="hero">
     <div class="hero-grid"></div>
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
+    
+    <div class="hero-live-badge">
+      <div class="pulse-dot"></div>
       <span>★ 15+ Years Ex-Banking Mastery | 40+ Partner Banks &amp; NBFCs</span>
     </div>
+
     <h1>Guaranteed Approvals &amp; Lowest ROI<br><em>Comprehensive Loan &amp; Banking Solutions</em></h1>
+    
     <p class="hero-sub">
-      Meet <strong>Hiren Kanzariya</strong> — Senior Financial Consultant &amp; Banking Specialist with 15+ years of ex-banking underwriting experience. 
+      Meet <strong>Hiren Kanzariya</strong> — Senior Financial Consultant &amp; Banking Specialist. 
       From Home Loans &amp; MSME Working Capital to High-Value LAP, Project Finance, and Rate Reduction Balance Transfers, 
-      get your loan sanctioned at the lowest market rates with lightning-fast processing.
+      get your loan sanctioned at the absolute lowest market rates with lightning-fast processing.
     </p>
+    
     <div class="hero-ctas">
       <a href="#contact" class="btn-primary">⚡ Apply for Loan Now</a>
       <a href="#calculator" class="btn-secondary">📊 Live EMI Calculator</a>
       <a href="https://wa.me/918140932289?text=Hello%20Hiren%20Sir%2C%20I%20am%20looking%20for%20a%20Loan%20consultation." target="_blank" class="btn-whatsapp">💬 Instant WhatsApp</a>
+    </div>
+
+    <!-- Trust Ribbon -->
+    <div class="hero-features-ribbon">
+      <div class="ribbon-item"><span class="ribbon-icon">⚡</span> 48-Hour Sanction Guarantee</div>
+      <div class="ribbon-item"><span class="ribbon-icon">🛡️</span> Zero Upfront Consultation Fee</div>
+      <div class="ribbon-item"><span class="ribbon-icon">🔒</span> 100% Confidential &amp; Compliant</div>
+      <div class="ribbon-item"><span class="ribbon-icon">📈</span> Lowest Interest Rate Lock</div>
     </div>
 
     <!-- Live Counter Metrics -->
@@ -163,11 +183,56 @@
     </div>
   </div>
 
+  <!-- ═══ DIRECT BANK VS HIREN COMPARISON ═══ -->
+  <section class="section comparison-section" id="comparison">
+    <div class="section-center">
+      <p class="section-tag reveal">The Smarter Choice</p>
+      <h2 class="section-title reveal reveal-d1">Why Apply with Us vs <strong>Direct Bank Branches?</strong></h2>
+      <p class="section-body reveal reveal-d2">
+        See how our ex-banking advisory saves you weeks of stress, prevents rejection marks on your credit report, and secures thousands in interest savings.
+      </p>
+    </div>
+
+    <div class="comparison-grid reveal reveal-d3">
+      
+      <!-- Card 1: Direct Bank -->
+      <div class="comparison-card bank-direct">
+        <span class="comp-card-badge negative">❌ Applying Directly to a Single Bank</span>
+        <h3 class="comp-title">Direct Bank Route</h3>
+        <p class="comp-desc">High risk of rejection, limited single-product bias, and lack of underwriting flexibility.</p>
+        <ul class="comp-list bank-direct">
+          <li><span class="icon-cross">✕</span> Restricted to only 1 bank’s rigid internal credit score rules</li>
+          <li><span class="icon-cross">✕</span> File rejection enters CIBIL as an inquiry mark, hurting future eligibility</li>
+          <li><span class="icon-cross">✕</span> You pay standard retail interest rates with zero bargaining power</li>
+          <li><span class="icon-cross">✕</span> 15 to 25 days slow turnaround time with repeated branch visits</li>
+          <li><span class="icon-cross">✕</span> No help with complex property legal paperwork, valuation, or low CIBIL</li>
+        </ul>
+      </div>
+
+      <!-- Card 2: Hiren Assisted -->
+      <div class="comparison-card hiren-assisted">
+        <span class="comp-card-badge positive">✓ With Hiren Kanzariya (Banking Advisory)</span>
+        <h3 class="comp-title">Strategic Banking Route</h3>
+        <p class="comp-desc">Institutional underwriting mastery, 40+ lenders compared, and guaranteed lowest ROI.</p>
+        <ul class="comp-list hiren-assisted">
+          <li><span class="icon-check">✓</span> <strong>40+ Top Banks &amp; NBFCs</strong> compared in real time for optimal eligibility</li>
+          <li><span class="icon-check">✓</span> <strong>Pre-Underwritten File</strong>: Zero risk of rejection before submission</li>
+          <li><span class="icon-check">✓</span> <strong>Lowest ROI Guaranteed</strong>: Institutional volume rates save lakhs in EMI</li>
+          <li><span class="icon-check">✓</span> <strong>48 to 72 Hours Fast Disbursal</strong> via direct Chief Manager escalations</li>
+          <li><span class="icon-check">✓</span> <strong>100% Doorstep Paperwork</strong>: Legal title search, valuation &amp; disbursal managed</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="silk-divider reveal"></div>
+
   <!-- ═══ LOAN SERVICES & SOLUTIONS ═══ -->
   <section class="section" id="services">
     <div class="section-center">
       <p class="section-tag reveal">Complete Financial Portfolio</p>
-      <h2 class="section-title reveal reveal-d1">All Types of Loans — <strong>End-to-End Solutions</strong></h2>
+      <h2 class="section-title reveal reveal-d1">All Types of Loans — <strong>Tailored Solutions</strong></h2>
       <p class="section-body reveal reveal-d2">
         Whether you are buying your dream home, scaling a manufacturing business, or seeking high-ticket project finance, we match you with the ideal bank offering the lowest interest rate and maximum loan eligibility.
       </p>
@@ -447,7 +512,7 @@
   <section class="section" id="calculator">
     <div class="section-center">
       <p class="section-tag reveal">Financial Planning Tool</p>
-      <h2 class="section-title reveal reveal-d1">Interactive <strong>Loan EMI Calculator</strong></h2>
+      <h2 class="section-title reveal reveal-d1">Interactive <strong>Loan EMI &amp; Savings Calculator</strong></h2>
       <p class="section-body reveal reveal-d2">
         Adjust the sliders below to calculate your estimated monthly installment, total interest payable, and overall payout.
       </p>
@@ -521,6 +586,10 @@
           <div class="breakdown-row">
             <span>Total Payment (Principal + Interest)</span>
             <strong id="calcTotalAmount">₹ 1,04,13,879</strong>
+          </div>
+
+          <div class="savings-highlight-box" id="calcSavingsHighlight">
+            ✨ <strong>Estimated Interest Savings:</strong> Save up to ₹ 4,80,000 vs standard rates!
           </div>
         </div>
 
@@ -815,6 +884,7 @@
       <div class="footer-brand">HIREN KANZARIYA &mdash; FINANCIAL CONSULTANT © 2026</div>
       <div class="footer-links">
         <a href="#services">Services</a>
+        <a href="#comparison">Why Us</a>
         <a href="#calculator">EMI Calculator</a>
         <a href="#checklist">Documents</a>
         <a href="#faq">FAQ</a>

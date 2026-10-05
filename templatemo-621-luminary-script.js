@@ -1,6 +1,6 @@
 /*
   Hiren Kanzariya — Senior Financial Consultant & Banking Specialist
-  Interactive & Dynamic Application Logic
+  Interactive & Dynamic Application Logic with Advanced EMI Analytics & Micro-Interactions
 */
 
 // ── Smooth Scroll ──
@@ -20,7 +20,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-// ── Reveal on Scroll ──
+// ── Reveal on Scroll with Stagger ──
 const reveals = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -29,10 +29,10 @@ const io = new IntersectionObserver(entries => {
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 reveals.forEach(el => io.observe(el));
 
-// ── Animated Counters ──
+// ── Animated Counters with Easing ──
 document.querySelectorAll('.counter').forEach(el => {
   new IntersectionObserver(([e], observer) => {
     if (!e.isIntersecting) return;
@@ -57,7 +57,7 @@ document.querySelectorAll('.counter').forEach(el => {
 const topNav = document.getElementById('topNav');
 if (topNav) {
   window.addEventListener('scroll', () => {
-    topNav.classList.toggle('scrolled', window.scrollY > 50);
+    topNav.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 }
 
@@ -174,10 +174,14 @@ filterButtons.forEach(btn => {
     loanCards.forEach(card => {
       if (category === 'all' || card.getAttribute('data-category').includes(category)) {
         card.style.display = 'flex';
-        setTimeout(() => card.style.opacity = '1', 20);
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 30);
       } else {
-        card.style.display = 'none';
         card.style.opacity = '0';
+        card.style.transform = 'translateY(15px)';
+        setTimeout(() => card.style.display = 'none', 250);
       }
     });
   });
@@ -197,7 +201,7 @@ function formatExactINR(num) {
   return '₹ ' + Math.round(num).toLocaleString('en-IN');
 }
 
-// ── EMI Calculator ──
+// ── EMI Calculator with Live Savings Calculator ──
 const loanAmountSlider = document.getElementById('calcLoanAmount');
 const loanInterestSlider = document.getElementById('calcInterestRate');
 const loanTenureSlider = document.getElementById('calcTenure');
@@ -210,6 +214,7 @@ const monthlyEmiDisplay = document.getElementById('calcMonthlyEmi');
 const totalInterestDisplay = document.getElementById('calcTotalInterest');
 const totalAmountDisplay = document.getElementById('calcTotalAmount');
 const principalAmountDisplay = document.getElementById('calcPrincipalDisplay');
+const calcSavingsHighlight = document.getElementById('calcSavingsHighlight');
 
 const barPrincipal = document.getElementById('barPrincipal');
 const barInterest = document.getElementById('barInterest');
@@ -219,7 +224,8 @@ function calculateEMI() {
   if (!loanAmountSlider || !loanInterestSlider || !loanTenureSlider) return;
 
   const P = parseFloat(loanAmountSlider.value);
-  const R = parseFloat(loanInterestSlider.value) / 12 / 100;
+  const rateVal = parseFloat(loanInterestSlider.value);
+  const R = rateVal / 12 / 100;
   const N = parseFloat(loanTenureSlider.value) * 12;
 
   // Monthly EMI = P * r * (1 + r)^n / ((1 + r)^n - 1)
@@ -227,15 +233,25 @@ function calculateEMI() {
   const totalPayment = emi * N;
   const totalInterest = totalPayment - P;
 
+  // Compare with a standard retail rate (e.g., standard market rate + 1.25%)
+  const benchmarkRate = (rateVal + 1.25) / 12 / 100;
+  const benchmarkEmi = (P * benchmarkRate * Math.pow(1 + benchmarkRate, N)) / (Math.pow(1 + benchmarkRate, N) - 1);
+  const benchmarkTotalInterest = (benchmarkEmi * N) - P;
+  const totalSavings = Math.max(0, benchmarkTotalInterest - totalInterest);
+
   // Update text displays
   loanAmountDisplay.textContent = formatIndianCurrency(P);
-  loanInterestDisplay.textContent = parseFloat(loanInterestSlider.value).toFixed(1) + ' %';
+  loanInterestDisplay.textContent = rateVal.toFixed(1) + ' %';
   loanTenureDisplay.textContent = loanTenureSlider.value + (parseInt(loanTenureSlider.value) === 1 ? ' Year' : ' Years');
 
   monthlyEmiDisplay.textContent = formatExactINR(emi);
   principalAmountDisplay.textContent = formatExactINR(P);
   totalInterestDisplay.textContent = formatExactINR(totalInterest);
   totalAmountDisplay.textContent = formatExactINR(totalPayment);
+
+  if (calcSavingsHighlight) {
+    calcSavingsHighlight.innerHTML = `✨ <strong>Estimated Interest Savings:</strong> Save up to ${formatExactINR(totalSavings)} vs market standard rates!`;
+  }
 
   // Update visual breakdown bar
   const principalPercent = (P / totalPayment) * 100;
@@ -247,7 +263,7 @@ function calculateEMI() {
   // Update apply button WhatsApp link
   if (calcApplyBtn) {
     const textMsg = encodeURIComponent(
-      `Hello Hiren Sir, I calculated my Loan requirement on your website:\n\n• Loan Amount: ${formatIndianCurrency(P)} (${formatExactINR(P)})\n• Interest Rate: ${loanInterestSlider.value}%\n• Tenure: ${loanTenureSlider.value} Years\n• Calculated EMI: ${formatExactINR(emi)}/month\n\nPlease let me know the best bank options and approval process.`
+      `Hello Hiren Sir, I calculated my Loan requirement on your website:\n\n• Loan Amount: ${formatIndianCurrency(P)} (${formatExactINR(P)})\n• Interest Rate: ${rateVal}%\n• Tenure: ${loanTenureSlider.value} Years\n• Calculated Monthly EMI: ${formatExactINR(emi)}/month\n\nPlease check my eligibility and suggest the lowest ROI bank.`
     );
     calcApplyBtn.href = `https://wa.me/918140932289?text=${textMsg}`;
   }
@@ -264,28 +280,28 @@ if (loanAmountSlider && loanInterestSlider && loanTenureSlider) {
 const checklistTabs = document.querySelectorAll('.checklist-tab-btn');
 const checklistViews = {
   salaried: [
-    { title: "Identity & Address Proof", desc: "PAN Card, Aadhaar Card, Passport or Voter ID" },
-    { title: "Income Proof", desc: "Latest 3-6 months Salary Slips with deductions breakdown" },
-    { title: "Bank Statements", desc: "Latest 6 months updated Salary Account statement" },
-    { title: "Employment Verification", desc: "Form 16 for last 2 years & Company Appointment / ID" }
+    { title: "Identity & KYC Documents", desc: "PAN Card, Aadhaar Card, Passport or Voter ID with permanent address" },
+    { title: "Salary Slips & Increment Letters", desc: "Latest 3 to 6 months salary slips reflecting all allowances & deductions" },
+    { title: "Salary Bank Account Statement", desc: "Latest 6 months updated bank statement where salary is credited" },
+    { title: "Form 16 & Employment Proof", desc: "Form 16 Part A & B for last 2 years + Official Company Identity Card" }
   ],
   business: [
-    { title: "Business Proof", desc: "GST Registration Certificate, Gumasta / Shop Act, MSME Udyam" },
-    { title: "Financial Documents", desc: "Audited Balance Sheet & P&L Statement for last 2-3 years" },
-    { title: "Income Tax Returns (ITR)", desc: "ITR Acknowledgements & Computation sheets for last 2-3 years" },
-    { title: "Bank Current Account", desc: "Latest 12 months Current & Savings account bank statements" }
+    { title: "Business Proof & Registrations", desc: "GST Registration Certificate, Gumasta / Shop Act, MSME Udyam Registration" },
+    { title: "Audited Financials (CA Certified)", desc: "Balance Sheet & Profit & Loss statements with audit report for last 2-3 years" },
+    { title: "Income Tax Returns (ITR)", desc: "ITR Acknowledgements & Computation sheets for last 2 to 3 Assessment Years" },
+    { title: "Current & Operating Bank Accounts", desc: "Latest 12 months bank statements of all active current & CC/OD accounts" }
   ],
   doctor: [
-    { title: "Degree & Registration", desc: "MBBS / MD / BDS Certificate & State Medical Council Registration" },
-    { title: "Clinic / Practice Proof", desc: "Clinic Setup proof, Ownership / Rental deed, Hospital tie-up letter" },
-    { title: "Income Proof & ITR", desc: "Last 2 years ITR with computation and CA audited statements" },
-    { title: "Banking Statements", desc: "Latest 6-12 months operating bank accounts" }
+    { title: "Degree & Medical Registration", desc: "MBBS / MD / MS / BDS / MDS Certificate & State Medical Council Registration" },
+    { title: "Clinic / Hospital Setup Proof", desc: "Clinic Registration, Property deed / Registered Rent Agreement, Hospital affiliation" },
+    { title: "Financials & Income Tax Returns", desc: "Last 2 years ITR with CA computation sheets and balance sheets" },
+    { title: "Professional Practice Banking", desc: "Latest 6 to 12 months operating bank account statements" }
   ],
   lap: [
-    { title: "Property Title Deeds", desc: "Registered Sale Deed, Mother Deed, Index II copy" },
-    { title: "Approved Map & Sanction", desc: "Municipal approved building plan, NA order, Completion certificate" },
-    { title: "Tax Receipts & NOC", desc: "Latest Property Tax receipts, Society NOC, Electricity bill" },
-    { title: "Encumbrance Certificate", desc: "Updated search report & non-encumbrance certificate" }
+    { title: "Complete Title Deeds", desc: "Registered Sale Deed, Mother Deed, Index II copy & chain of title documents" },
+    { title: "Approved Municipal Map & Sanctions", desc: "Approved Building Layout, NA (Non-Agricultural) order, Completion / OC certificate" },
+    { title: "Tax Receipts & Society NOC", desc: "Latest Property Tax receipts, Society NOC / Share Certificate copy, Electricity bill" },
+    { title: "Encumbrance Search Report", desc: "13 to 30 years non-encumbrance certificate & search report from advocate" }
   ]
 };
 
@@ -334,7 +350,7 @@ if (faqToggleAll) {
     allExpanded = !allExpanded;
     if (allExpanded) {
       faqItems.forEach((item, i) => {
-        setTimeout(() => item.classList.add('open'), i * 150);
+        setTimeout(() => item.classList.add('open'), i * 140);
       });
     } else {
       const total = faqItems.length;
@@ -342,7 +358,7 @@ if (faqToggleAll) {
         setTimeout(() => item.classList.remove('open'), (total - 1 - i) * 60);
       });
     }
-    setTimeout(updateFaqToggleLabel, faqItems.length * 150 + 100);
+    setTimeout(updateFaqToggleLabel, faqItems.length * 140 + 100);
   });
 }
 
@@ -376,13 +392,33 @@ if (loanForm) {
       `💰 *Required Amount:* ₹ ${loanAmount}\n` +
       `🏢 *Employment:* ${empType}\n` +
       (notes ? `📝 *Notes:* ${notes}\n\n` : `\n`) +
-      `Please provide guidance on eligibility and the best bank offer.`
+      `Please review my profile and share the best bank offer.`
     );
 
     // Open WhatsApp directly
     window.open(`https://wa.me/918140932289?text=${formattedMessage}`, '_blank');
 
-    alert(`Thank you, ${name}! Your loan inquiry for ₹ ${loanAmount} has been prepared. We are connecting you directly with Senior Financial Consultant Hiren Kanzariya on WhatsApp.`);
+    alert(`Thank you, ${name}! Your loan inquiry for ₹ ${loanAmount} has been received. You are now being connected directly with Senior Financial Consultant Hiren Kanzariya on WhatsApp.`);
     loanForm.reset();
+  });
+}
+
+// ── 3D Tilt Effect on Loan Cards ──
+if (window.innerWidth > 1024) {
+  document.querySelectorAll('.loan-card, .comparison-card.hiren-assisted').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
   });
 }
