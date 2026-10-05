@@ -249,7 +249,7 @@ function calculateEMI() {
     const textMsg = encodeURIComponent(
       `Hello Hiren Sir, I calculated my Loan requirement on your website:\n\n• Loan Amount: ${formatIndianCurrency(P)} (${formatExactINR(P)})\n• Interest Rate: ${loanInterestSlider.value}%\n• Tenure: ${loanTenureSlider.value} Years\n• Calculated EMI: ${formatExactINR(emi)}/month\n\nPlease let me know the best bank options and approval process.`
     );
-    calcApplyBtn.href = `https://wa.me/919876543210?text=${textMsg}`;
+    calcApplyBtn.href = `https://wa.me/918140932289?text=${textMsg}`;
   }
 }
 
@@ -380,7 +380,7 @@ if (loanForm) {
     );
 
     // Open WhatsApp directly
-    window.open(`https://wa.me/919876543210?text=${formattedMessage}`, '_blank');
+    window.open(`https://wa.me/918140932289?text=${formattedMessage}`, '_blank');
 
     alert(`Thank you, ${name}! Your loan inquiry for ₹ ${loanAmount} has been prepared. We are connecting you directly with Senior Financial Consultant Hiren Kanzariya on WhatsApp.`);
     loanForm.reset();
