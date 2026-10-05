@@ -532,34 +532,63 @@ body.menu-open { overflow: hidden; }
 @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
 /* ══════════════════════════════════
-   BANK PARTNERS TICKER
+   BANK PARTNERS TICKER (PRESTIGE MARQUEE)
    ══════════════════════════════════ */
 .logo-ticker {
-  padding: 44px 0; border-top: 1px solid var(--panel-border); border-bottom: 1px solid var(--panel-border);
+  padding: 30px 0;
+  border-top: 1px solid rgba(159, 176, 199, 0.12);
+  border-bottom: 1px solid rgba(159, 176, 199, 0.12);
   overflow: hidden; position: relative; z-index: 10;
-  background: rgba(8, 11, 16, 0.6);
+  background: rgba(10, 15, 23, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
 }
 .logo-ticker-label {
-  text-align: center; font-size: 10px; font-weight: 800; letter-spacing: 0.25em;
-  text-transform: uppercase; color: var(--gold-light); opacity: 0.85; margin-bottom: 22px;
+  text-align: center; font-size: 10.5px; font-weight: 800; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold-light); opacity: 0.9; margin-bottom: 18px;
 }
 .ticker-track {
-  display: flex; width: max-content;
-  animation: tickerScroll 35s linear infinite;
+  display: flex; width: max-content; gap: 16px;
+  animation: tickerScroll 30s linear infinite;
+  align-items: center;
 }
 .ticker-track:hover { animation-play-state: paused; }
 .ticker-item {
-  flex-shrink: 0; padding: 10px 24px; display: flex; align-items: center; gap: 10px;
-  font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--slate-light); opacity: 0.8;
-  border-radius: 100px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
-  transition: all 0.4s var(--silk-ease);
+  flex-shrink: 0; padding: 7px 18px 7px 8px; display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--ivory-muted);
+  border-radius: 100px;
+  background: rgba(18, 24, 36, 0.85);
+  border: 1px solid rgba(159, 176, 199, 0.16);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s var(--silk-ease);
 }
 .ticker-item:hover {
-  opacity: 1; color: var(--gold-light); border-color: rgba(245, 158, 11, 0.4);
-  transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  color: var(--ivory); border-color: rgba(245, 158, 11, 0.45);
+  transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 15px var(--gold-glow);
 }
-.ticker-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); opacity: 0.4; margin: 0 20px; flex-shrink: 0; }
+
+/* Micro Bank Logo Pill Tags */
+.bank-pill {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 9.5px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 100px; color: #FFFFFF; flex-shrink: 0;
+}
+.bank-pill.sbi { background: linear-gradient(135deg, #0A58CA, #04419C); }
+.bank-pill.hdfc { background: linear-gradient(135deg, #004C8F, #003366); }
+.bank-pill.icici { background: linear-gradient(135deg, #F5651B, #C2410C); }
+.bank-pill.axis { background: linear-gradient(135deg, #97144D, #700E39); }
+.bank-pill.kotak { background: linear-gradient(135deg, #ED1C24, #B91C1C); }
+.bank-pill.bob { background: linear-gradient(135deg, #F26522, #EA580C); }
+.bank-pill.tata { background: linear-gradient(135deg, #2563EB, #1D4ED8); }
+.bank-pill.bajaj { background: linear-gradient(135deg, #0284C7, #0369A1); }
+.bank-pill.idfc { background: linear-gradient(135deg, #991B1B, #7F1D1D); }
+.bank-pill.pnb { background: linear-gradient(135deg, #A21CAF, #86198F); }
+.bank-pill.abcl { background: linear-gradient(135deg, #D97706, #B45309); }
+.bank-pill.lt { background: linear-gradient(135deg, #059669, #047857); }
+.bank-pill.indus { background: linear-gradient(135deg, #831843, #701A75); }
+.bank-pill.poona { background: linear-gradient(135deg, #6366F1, #4F46E5); }
 
 @keyframes tickerScroll { to { transform: translateX(-50%); } }
 
