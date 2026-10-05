@@ -482,6 +482,8 @@ updateNavAndPanels();
 // ── Mobile Menu ──
 const toggle = document.getElementById('navToggle');
 const menu = document.getElementById('mobileMenu');
+const menuClose = document.getElementById('mobileMenuClose');
+
 if (toggle && menu) {
   const menuLinks = menu.querySelectorAll('.mobile-menu-link');
   let menuOpen = false;
@@ -495,7 +497,6 @@ if (toggle && menu) {
   }
 
   function closeMenu() {
-    if (!menuOpen) return;
     menuOpen = false;
     toggle.classList.remove('active');
     toggle.setAttribute('aria-expanded', 'false');
@@ -503,8 +504,24 @@ if (toggle && menu) {
     document.body.classList.remove('menu-open');
   }
 
-  toggle.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
-  menuLinks.forEach(l => l.addEventListener('click', closeMenu));
+  toggle.addEventListener('click', e => {
+    e.stopPropagation();
+    menuOpen ? closeMenu() : openMenu();
+  });
+  
+  if (menuClose) {
+    menuClose.addEventListener('click', e => {
+      e.stopPropagation();
+      closeMenu();
+    });
+  }
+
+  menuLinks.forEach(l => {
+    l.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
+  
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
   window.addEventListener('resize', () => { if (window.innerWidth > 1024) closeMenu(); });
 }
